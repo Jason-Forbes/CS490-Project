@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Login as:</h2>
+    <div class="login-buttons">
+        <button class="btn btn-student" onclick="selectRole('student')">Student</button>
+        <button class="btn btn-instructor" onclick="selectRole('instructor')">Instructor</button>
+        <button class="btn btn-guest" onclick="selectRole('guest')">Guest</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function selectRole(role) {
+    if (role === 'guest') {
+        alert('Guest mode - Demo coming soon!');
+        return;
+    }
+    
+    // Simple (like realllyyyyyy simple lol) redirect for now (will add proper authentication later)
+    const email = prompt('Enter email:');
+    if (email) {
+        fetch('/api/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email: email, role: role})
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (role === 'student') {
+                window.location.href = '/student/dashboard';
+            } else {
+                window.location.href = '/instructor/dashboard';
+            }
+        });
+    }
+}
+</script>
+{% endblock %}

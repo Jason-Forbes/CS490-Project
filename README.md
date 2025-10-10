@@ -1,15 +1,9 @@
 ## Delete once we all have the environment set up
 
-1. Install Python 3.10+
+This is the branch for the login page that actually asks for information.  It can be used for both instructor and student views.
 
-2. Create virtual environment:
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+CSS changes made on this branch will also be added to the test-branch.
 
-3. Install dependencies:
-   pip install -r requirements.txt
-
-4. Run the application:
-   python run.py
-
-5. Access at: http://localhost:5000
+To-Do List:
+1. "Login" Button
+2. General maintenance/colorizing

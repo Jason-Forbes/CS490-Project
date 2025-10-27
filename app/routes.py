@@ -18,5 +18,5 @@ def home():
 
 @main_bp.route("/")
 def home():
-    return render_template("login.html")
+    return render_template("student_view.html")
 

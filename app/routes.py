@@ -208,6 +208,7 @@ def class_detail(class_id):
     
     # Render the template with both data structures
     return render_template('class_detail.html',
+                         class_id=class_id,  # <-- IMPORTANT: Pass class_id to template
                          class_name=class_data['name'],
                          students=students,
                          learning_objectives=learning_objectives)
@@ -228,18 +229,78 @@ def select_class():
         return redirect(url_for('main.instructor_main'))
 
 
-@main_bp.route("/create_learning_objective")
-def create_learning_objective():
+@main_bp.route("/class/<class_id>/create_learning_objective")
+def create_learning_objective(class_id):
     """Page to create a new learning objective"""
-    # TODO: Implement create learning objective page
-    return "Create Learning Objective Page - Coming Soon"
+    # Check if class exists
+    if class_id not in classes:
+        return redirect(url_for('main.instructor_main'))
+    
+    class_data = classes[class_id]
+    
+    return render_template('create_learning_objective.html',
+                         class_id=class_id,
+                         class_name=class_data['name'])
 
 
-@main_bp.route("/update_grade")
-def update_grade():
+@main_bp.route("/class/<class_id>/update_grade")
+def update_grade(class_id):
     """Page to update student grades"""
-    # TODO: Implement update grade page
-    return "Update Grade Page - Coming Soon"
+    # Check if class exists
+    if class_id not in classes:
+        return redirect(url_for('main.instructor_main'))
+    
+    class_data = classes[class_id]
+    
+    return render_template('update_grade.html',
+                         class_id=class_id,
+                         class_name=class_data['name'])
+
+
+@main_bp.route("/class/<class_id>/upload_grades", methods=['POST'])
+def upload_grades(class_id):
+    """Handle grade file upload"""
+    # Check if class exists
+    if class_id not in classes:
+        return redirect(url_for('main.instructor_main'))
+    
+    # Check if file was uploaded
+    if 'file' not in request.files:
+        return "No file uploaded", 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return "No file selected", 400
+    
+    # TODO: Process the uploaded file (CSV/Excel)
+    # For now, just redirect back to class detail
+    # Later you'll add code here to parse the file and update grades
+    
+    return redirect(url_for('main.class_detail', class_id=class_id))
+
+
+@main_bp.route("/class/<class_id>/upload_learning_objective", methods=['POST'])
+def upload_learning_objective(class_id):
+    """Handle learning objective file upload"""
+    # Check if class exists
+    if class_id not in classes:
+        return redirect(url_for('main.instructor_main'))
+    
+    # Check if file was uploaded
+    if 'file' not in request.files:
+        return "No file uploaded", 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return "No file selected", 400
+    
+    # TODO: Process the uploaded file (CSV/Excel)
+    # For now, just redirect back to class detail
+    # Later you'll add code here to parse the file and create the learning objective
+    
+    return redirect(url_for('main.class_detail', class_id=class_id))
 
 
 @main_bp.route("/add_class", methods=['POST'])

@@ -1,0 +1,81 @@
+/* Authentication pages specific styles */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 2rem;
+}
+
+.login-container, 
+.signup-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 500px; /* Fixed width instead of max-width */
+    min-height: 400px;
+}
+
+.login-container h2,
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.login-container p,
+.signup-container p {
+    text-align: center;
+    color: #718096;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #3d5a80;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #94d2bd;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .login-container,
+    .signup-container {
+        padding: 2rem;
+        min-height: 350px;
+        width: 100%; /* Full width on mobile */
+        max-width: 500px; /* But not more than 500px */
+    }
+    
+    main {
+        padding: 1rem;
+    }
+}

@@ -20,7 +20,7 @@ main {
     padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    width: 500px; /* Fixed width instead of max-width */
+    width: 500px;
     min-height: 400px;
 }
 
@@ -28,18 +28,75 @@ main {
 .signup-container h2 {
     text-align: center;
     margin-bottom: 0.5rem;
+    color: #d35d4d;
 }
 
-.login-container p,
-.signup-container p {
+.login-container > p,
+.signup-container > p {
     text-align: center;
     color: #718096;
+    margin-bottom: 1.5rem;
 }
 
+/* Role selection buttons */
+.role-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.role-selection .btn-role {
+    width: 100%;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn-role {
+    background-color: #f87171;
+    color: white;
+    border: 2px solid transparent;
+    width: 100%;
+}
+
+.btn-role.active-role {
+    background-color: white;
+    color: #f87171;
+    border: 2px solid #f87171;
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.4);
+    transform: scale(1.02);
+}
+
+.btn-role:hover:not(.active-role) {
+    background-color: #fb9a9a;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background-color: #94d2bd;
+    color: #2d3748;
+    width: 100%;
+}
+
+/* Form styles */
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
@@ -54,6 +111,7 @@ main {
     border-radius: 8px;
     font-size: 1rem;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-control:focus {
@@ -61,8 +119,13 @@ main {
     border-color: #94d2bd;
 }
 
-.btn-primary {
+/* Utility classes */
+.w-100 {
     width: 100%;
+}
+
+.mt-3 {
+    margin-top: 1rem;
 }
 
 /* Responsive design */
@@ -71,8 +134,8 @@ main {
     .signup-container {
         padding: 2rem;
         min-height: 350px;
-        width: 100%; /* Full width on mobile */
-        max-width: 500px; /* But not more than 500px */
+        width: 100%;
+        max-width: 500px;
     }
     
     main {

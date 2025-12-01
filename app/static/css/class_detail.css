@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    background-color: #e8dcc1;
+    color: #1f2937;
+}
+
+header {
+    background-color: #f5ecd8;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.header-icons {
+    margin-left: auto;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.profile-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.back-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 1.125rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn {
+    padding: 0.875rem 1.75rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #9CF3D6;
+    color: #1f2937;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(156, 243, 214, 0.3);
+}
+
+.view-toggle {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    outline: none;
+    background: white;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.content-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #374151;
+}
+
+.expand-controls {
+    display: flex;
+    gap: 2rem;
+}
+
+.expand-controls button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.expand-controls button:hover {
+    color: #6b7280;
+}
+
+/* Student View Styles */
+.student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.student-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.student-header {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.student-header:hover {
+    background: #f9fafb;
+}
+
+.chevron {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #6b7280;
+    border-bottom: 2px solid #6b7280;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+}
+
+.student-item.expanded .chevron,
+.lo-item.expanded .chevron {
+    transform: rotate(-135deg);
+}
+
+.learning-objectives-content {
+    display: none;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.student-item.expanded .learning-objectives-content {
+    display: block;
+}
+
+.lo-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f3f4f6;
+    gap: 1rem;
+}
+
+.lo-row:last-child {
+    border-bottom: none;
+}
+
+.lo-name {
+    color: #374151;
+}
+
+.lo-score {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* Learning Objectives View Styles */
+.lo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lo-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.lo-header {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.lo-header:hover {
+    background: #f9fafb;
+}
+
+.lo-content {
+    display: none;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.lo-item.expanded .lo-content {
+    display: block;
+}
+
+.mastery-group {
+    margin-bottom: 1.5rem;
+}
+
+.mastery-group:last-child {
+    margin-bottom: 0;
+}
+
+.mastery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.mastery-count {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.student-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid #f3f4f6;
+    gap: 1rem;
+    align-items: center;
+}
+
+.student-row:last-child {
+    border-bottom: none;
+}
+
+.student-name {
+    color: #374151;
+}
+
+.score-badge {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Add Student Form Styles */
+.add-student-form {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 2px dashed #d1d5db;
+}
+
+.add-student-form h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #9CF3D6;
+    box-shadow: 0 0 0 3px rgba(156, 243, 214, 0.1);
+}
+
+.btn-add-student {
+    padding: 0.625rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #9CF3D6;
+    color: #1f2937;
+    transition: all 0.2s;
+}
+
+.btn-add-student:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(156, 243, 214, 0.3);
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
